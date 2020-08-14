@@ -1,9 +1,9 @@
 import React from "react";
 
-function Blog() {
+function Discover() {
   return (
     <div>
-      <h1>Blog Page</h1>
+      <h1>Discover Page</h1>
       <p>
         Donec a volutpat quam. Curabitur nec varius justo, sed rutrum ligula. Curabitur pellentesque
         turpis sit amet eros iaculis, a mollis arcu dictum. Ut vel ante eget massa ornare placerat.
@@ -20,4 +20,4 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default Discover;
