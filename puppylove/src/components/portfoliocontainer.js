@@ -14,6 +14,20 @@ class PortfolioContainer extends Component {
     this.setState({ currentPage: page });
   };
 
+  switchPage = () => {
+    const currentPage = this.state.currentPage;
+    if (currentPage === "About") {
+      return <About />;
+    } else if (currentPage === "Blog") {
+      return <Blog />;
+    } else if (currentPage === "Contact") {
+      return <Contact />
+    } else if (currentPage === "Home") {
+      return <Home />;
+    }
+
+  }
+
   render() {
     return (
       <div>
@@ -21,8 +35,7 @@ class PortfolioContainer extends Component {
           currentPage={this.state.currentPage}
           handlePageChange={this.handlePageChange}
         />
-        Based on `this.state.currentPage`, render the appropriate component
-        here.
+        {this.switchPage()}
       </div>
     );
   }
