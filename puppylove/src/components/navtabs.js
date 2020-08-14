@@ -15,7 +15,7 @@ function NavTabs(props) {
       </li>
       <li className="nav-item">
         <a href="#search" onClick={() => props.handlePageChange("Search")} className="nav-link">
-          search
+          Search
         </a>
       </li>
     </ul>

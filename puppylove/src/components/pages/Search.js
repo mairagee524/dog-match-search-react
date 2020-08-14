@@ -1,21 +1,51 @@
-import React from "react";
+import React, { Component }  from "react";
+import SearchForm from "../Form";
+import Container from "../Container";
+import API from "../../utils/API";
 
-function Search() {
-  return (
-    <div>
-      <h1>Search Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
-        varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
-        Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
-        imperdiet ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras rutrum
-        ligula in tincidunt commodo. Morbi sit amet mollis orci, in tristique ex. Donec nec ornare
-        elit. Donec blandit est sed risus feugiat porttitor. Vestibulum molestie hendrerit massa non
-        consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
-        malesuada fames ac ante ipsum primis in faucibus.
-      </p>
-    </div>
-  );
+class DogSearch extends Component {
+  state = {
+    result: {},
+    search: ""
+  };
+
+  // When this component mounts, search for the movie "The Matrix"
+  componentDidMount() {
+    this.searchDogs("Pug");
+  }
+
+  searchDogs = query => {
+    API.search(query)
+      .then(res => this.setState({ result: res.data }))
+      .catch(err => console.log(err));
+  };
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  // When the form is submitted, search the OMDB API for the value of `this.state.search`
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.searchDogs(this.state.search);
+  };
+
+  render() {
+    return (
+      <Container>
+              <SearchForm
+                value={this.state.search}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+              />
+      </Container>
+    );
+  }
 }
 
-export default Search;
+
+export default DogSearch;
