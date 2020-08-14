@@ -37,6 +37,7 @@ class DogSearch extends Component {
   render() {
     return (
       <Container>
+        <h1>Search by Breed!</h1>
               <SearchForm
                 value={this.state.search}
                 handleInputChange={this.handleInputChange}
