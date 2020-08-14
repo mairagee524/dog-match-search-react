@@ -43,6 +43,7 @@ class DogSearch extends Component {
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
               />
+        <div>INSERT PHOTOS HERE TOO</div>
       </Container>
     );
   }
