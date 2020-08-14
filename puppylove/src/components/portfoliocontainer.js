@@ -6,7 +6,7 @@ import Discover from "./pages/Discover";
 
 class PortfolioContainer extends Component {
   state = {
-    currentPage: "Home"
+    currentPage: "About"
   };
 
   handlePageChange = page => {
