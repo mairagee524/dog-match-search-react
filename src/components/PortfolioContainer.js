@@ -3,6 +3,7 @@ import NavTabs from "./NavTabs";
 import Search from "../pages/Search";
 import About from "../pages/About";
 import Discover from "../pages/Discover";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class PortfolioContainer extends Component {
   state = {
@@ -26,13 +27,16 @@ class PortfolioContainer extends Component {
 
   render() {
     return (
-      <div>
-        <NavTabs
-          currentPage={this.state.currentPage}
-          handlePageChange={this.handlePageChange}
-        />
-        {this.switchPage()}
-      </div>
+      <Router>
+        <div>
+          <NavTabs />
+            <Route exact path="/" component={About} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/discover" component={Discover} />
+            <Route exact path="/search" component={Search} />
+          {this.switchPage()}
+        </div>
+      </Router>
     );
   }
 }
