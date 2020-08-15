@@ -10,21 +10,6 @@ class PortfolioContainer extends Component {
     currentPage: "About"
   };
 
-  handlePageChange = page => {
-    this.setState({ currentPage: page });
-  };
-
-  switchPage = () => {
-    const currentPage = this.state.currentPage;
-    if (currentPage === "About") {
-      return <About />;
-    } else if (currentPage === "Discover") {
-      return <Discover />;
-    } else if (currentPage === "Search") {
-      return <Search />
-    }
-  }
-
   render() {
     return (
       <Router>
@@ -34,7 +19,6 @@ class PortfolioContainer extends Component {
             <Route exact path="/about" component={About} />
             <Route exact path="/discover" component={Discover} />
             <Route exact path="/search" component={Search} />
-          {this.switchPage()}
         </div>
       </Router>
     );
