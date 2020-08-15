@@ -39,11 +39,11 @@ class DogSearch extends Component {
       <div>
         <Container style={{ minHeight: "80%" }}>
           <h1>Search by Breed!</h1>
-          {this.state.error}
           <SearchForm
-            value={this.state.search}
+            // value={this.state.search}
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit}
+            breeds={this.state.breeds}
           />
           <SearchResults results={this.state.results} />
         </Container>
@@ -51,6 +51,5 @@ class DogSearch extends Component {
     );
   }
 }
-
 
 export default DogSearch;
