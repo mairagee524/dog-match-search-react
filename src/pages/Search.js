@@ -37,15 +37,15 @@ class DogSearch extends Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container style={{ minHeight: "80%" }}>
           <h1>Search by Breed!</h1>
-                <SearchForm
-                  value={this.state.search}
-                  handleInputChange={this.handleInputChange}
-                  handleFormSubmit={this.handleFormSubmit}
-                />
-                <SearchResults results={this.state.results} />
-          <div>INSERT PHOTOS HERE TOO</div>
+          {this.state.error}
+          <SearchForm
+            value={this.state.search}
+            handleInputChange={this.handleInputChange}
+            handleFormSubmit={this.handleFormSubmit}
+          />
+          <SearchResults results={this.state.results} />
         </Container>
       </div>
     );

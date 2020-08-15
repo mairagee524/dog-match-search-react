@@ -1,21 +1,27 @@
 import React from "react";
+import "./form.css";
 
 function SearchForm(props) {
   return (
-    <form>
+    <form className="search">
       <div className="form-group">
         <label htmlFor="search">Search Breed:</label>
         <input
+          value={props.search}
           onChange={props.handleInputChange}
-          value={props.value}
-          name="search"
+          name="breed"
+          list="breeds"
           type="text"
           className="form-control"
-          placeholder="Breed Name"
-          id="search"
+          placeholder="Type in the breed name to begin"
+          id="breed"
         />
-        <br />
-        <button onClick={props.handleFormSubmit} className="btn btn-primary">
+         <datalist id="breeds">
+          {props.breeds.map(breed => (
+            <option value={breed} key={breed} />
+          ))}
+        </datalist>
+        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
           Search
         </button>
       </div>
