@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import NavTabs from "./NavTabs";
-import Search from "./pages/Search";
-import About from "./pages/About";
-import Discover from "./pages/Discover";
+import Search from "../pages/Search";
+import About from "../pages/About";
+import Discover from "../pages/Discover";
 
 class PortfolioContainer extends Component {
   state = {
