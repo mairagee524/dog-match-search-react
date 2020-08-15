@@ -2,49 +2,52 @@ import React, { Component }  from "react";
 import SearchForm from "../components/Form";
 import Container from "../components/Container";
 import API from "../utils/API";
+import SearchResults from "../components/SearchResults";
 
 class DogSearch extends Component {
   state = {
-    result: {},
-    search: ""
+    search: "",
+    breeds: [],
+    results: [],
+    error: ""
   };
 
-  // When this component mounts, search for the movie "The Matrix"
+  // When the component mounts, get a list of all available base breeds and update this.state.breeds
   componentDidMount() {
-    this.searchDogs("Pug");
+    API.getBaseBreedsList()
+      .then(res => this.setState({ breeds: res.data.message }))
+      .catch(err => console.log(err));
   }
 
-  searchDogs = query => {
-    API.search(query)
-      .then(res => this.setState({ result: res.data }))
-      .catch(err => console.log(err));
-  };
-
   handleInputChange = event => {
-    const value = event.target.value;
-    const name = event.target.name;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ search: event.target.value });
   };
 
-  // When the form is submitted, search the OMDB API for the value of `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchDogs(this.state.search);
+    API.getDogsOfBreed(this.state.search)
+      .then(res => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        this.setState({ results: res.data.message, error: "" });
+      })
+      .catch(err => this.setState({ error: err.message }));
   };
-
   render() {
     return (
-      <Container>
-        <h1>Search by Breed!</h1>
-              <SearchForm
-                value={this.state.search}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-              />
-        <div>INSERT PHOTOS HERE TOO</div>
-      </Container>
+      <div>
+        <Container>
+          <h1>Search by Breed!</h1>
+                <SearchForm
+                  value={this.state.search}
+                  handleInputChange={this.handleInputChange}
+                  handleFormSubmit={this.handleFormSubmit}
+                />
+                <SearchResults results={this.state.results} />
+          <div>INSERT PHOTOS HERE TOO</div>
+        </Container>
+      </div>
     );
   }
 }

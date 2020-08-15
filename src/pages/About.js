@@ -1,6 +1,6 @@
 import React from "react";
 import aboutPuppy from '../img/about-puppy.jpg'
-import Container from '../components/Container"'
+import Container from '../components/Container'
 
 function About() {
   return (
