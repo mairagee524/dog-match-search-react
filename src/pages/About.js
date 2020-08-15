@@ -1,5 +1,5 @@
 import React from "react";
-import aboutPuppy from '../about-puppy.jpg'
+import aboutPuppy from '../img/about-puppy.jpg'
 
 function About() {
   return (

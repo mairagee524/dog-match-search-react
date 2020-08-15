@@ -1,7 +1,7 @@
 import React, { Component }  from "react";
-import SearchForm from "../Form";
-import Container from "../Container";
-import API from "../../utils/API";
+import SearchForm from "../components/Form";
+import Container from "../components/Container";
+import API from "../utils/API";
 
 class DogSearch extends Component {
   state = {
